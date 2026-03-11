@@ -1,0 +1,831 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "shincn",
+  "homepage": "https://ui.ch.sh",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utilities",
+      "description": "cn() helper — clsx + tailwind-merge",
+      "dependencies": ["clsx", "tailwind-merge"],
+      "files": [
+        {
+          "path": "registry/new-york/lib/utils.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "motion",
+      "type": "registry:lib",
+      "title": "Motion Presets",
+      "description": "Framer Motion easing curves, duration presets, and enter/exit animations",
+      "files": [
+        {
+          "path": "registry/new-york/lib/motion.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "use-mobile",
+      "type": "registry:hook",
+      "title": "useMobile",
+      "description": "React hook that detects mobile viewport via matchMedia",
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-mobile.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
+      "name": "charles",
+      "type": "registry:file",
+      "title": "Design System",
+      "description": "shincn design system document — drop in any project root for AI-assisted UI generation",
+      "files": [
+        {
+          "path": "charles.md",
+          "type": "registry:file",
+          "target": "charles.md"
+        }
+      ]
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Expandable/collapsible content sections",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "title": "Alert",
+      "description": "Displays a callout for important content with optional action",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/alert.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "alert-dialog",
+      "type": "registry:ui",
+      "title": "Alert Dialog",
+      "description": "Modal dialog for confirmations and destructive actions",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/alert-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "aspect-ratio",
+      "type": "registry:ui",
+      "title": "Aspect Ratio",
+      "description": "Maintains a consistent width-to-height ratio for content",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/aspect-ratio.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "Image element with fallback, groups, and status badges",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Displays a badge or tag with variant styles",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "breadcrumb",
+      "type": "registry:ui",
+      "title": "Breadcrumb",
+      "description": "Navigation breadcrumb trail with separators and ellipsis",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/breadcrumb.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Embossed button with classic raised look, multiple variants and sizes",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@layer components": "/* btn-classic: Embossed/raised button treatment via layered shadows + ::after gradient */\n.btn-classic {\n  position: relative;\n  z-index: 0;\n  background-clip: border-box !important;\n  background-image:\n    linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.04)),\n    linear-gradient(to bottom, transparent 50%, var(--btn-classic-bg, transparent) 80%);\n  box-shadow:\n    inset 0 1px 0 0 oklch(1 0 0 / 0.12),\n    inset 0 0 0 1px var(--btn-classic-bg, transparent),\n    0 1px 2px 0 oklch(0 0 0 / 0.06),\n    0 1px 3px 0 oklch(0 0 0 / 0.04);\n}\n.btn-classic::after {\n  content: '';\n  position: absolute;\n  border-radius: inherit;\n  pointer-events: none;\n  inset: 0;\n  z-index: 1;\n  border: 1px solid transparent;\n  background-clip: content-box;\n  background-image: linear-gradient(oklch(0 0 0 / 0.02), transparent 40%, oklch(1 0 0 / 0.06));\n  box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.12);\n  transition: background-color 150ms ease, background-image 150ms ease, box-shadow 150ms ease;\n}\n.btn-classic > * {\n  position: relative;\n  z-index: 2;\n}\n@media (hover: hover) and (pointer: fine) {\n  .btn-classic:hover:not(:disabled, [data-disabled])::after {\n    background-image: linear-gradient(oklch(0 0 0 / 0.04) -15%, transparent 40%, oklch(1 0 0 / 0.08));\n  }\n  .btn-classic-primary:hover:not(:disabled, [data-disabled])::after,\n  .btn-classic-destructive:hover:not(:disabled, [data-disabled])::after {\n    background-color: oklch(1 0 0 / 0.1);\n    background-image: linear-gradient(oklch(1 0 0 / 0.14), oklch(1 0 0 / 0.05) 40%, transparent 60%, oklch(0 0 0 / 0.03));\n    box-shadow: inset 0 1px 2px 0 oklch(1 0 0 / 0.25), inset 0 -1px 2px 0 oklch(0 0 0 / 0.1);\n  }\n}\n.btn-classic:active:not(:disabled, [data-disabled]) {\n  background-image: linear-gradient(oklch(0 0 0 / 0.03), transparent);\n  box-shadow:\n    inset 0 4px 2px -2px oklch(0 0 0 / 0.06),\n    inset 0 1px 1px oklch(0 0 0 / 0.08),\n    inset 0 0 0 1px oklch(0 0 0 / 0.05),\n    inset 0 0 0 1px var(--btn-classic-bg, transparent),\n    inset 0 3px 2px oklch(0 0 0 / 0.04);\n  padding-top: 1px;\n}\n.btn-classic:active:not(:disabled, [data-disabled])::after {\n  box-shadow: none;\n  background-image: linear-gradient(oklch(0 0 0 / 0.04), transparent 40%, oklch(1 0 0 / 0.06));\n}\n.btn-classic:where(:disabled, [data-disabled]) {\n  background-image: none;\n  box-shadow: none;\n}\n.btn-classic:where(:disabled, [data-disabled])::after {\n  box-shadow: none;\n  background-image: linear-gradient(oklch(0 0 0 / 0.02) -20%, transparent, oklch(1 0 0 / 0.02));\n}\n.btn-classic-primary {\n  --btn-classic-bg: var(--primary);\n  background-image: linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.15)), linear-gradient(to bottom, transparent 50%, var(--primary) 80%);\n  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.25), inset 0 0 0 1px var(--primary), inset 0 -1px 0 0 oklch(0 0 0 / 0.2), 0 1px 3px 0 oklch(0 0 0 / 0.12), 0 2px 6px 0 oklch(0 0 0 / 0.08);\n}\n.btn-classic-primary::after {\n  background-image: linear-gradient(oklch(1 0 0 / 0.1), oklch(1 0 0 / 0.03) 40%, transparent 60%, oklch(0 0 0 / 0.05));\n  box-shadow: inset 0 1px 2px 0 oklch(1 0 0 / 0.2), inset 0 -1px 2px 0 oklch(0 0 0 / 0.15);\n}\n.btn-classic-outline {\n  --btn-classic-bg: var(--background);\n  background-image: linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));\n  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.6), 0 1px 2px 0 oklch(0 0 0 / 0.05), 0 0 0 1px var(--border);\n}\n.btn-classic-outline::after {\n  box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.3);\n}\n.btn-classic-secondary {\n  --btn-classic-bg: var(--secondary);\n  background-image: linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));\n  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.5), 0 1px 2px 0 oklch(0 0 0 / 0.04), 0 0 0 1px oklch(0 0 0 / 0.06);\n}\n.btn-classic-secondary::after {\n  box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.25);\n}\n.btn-classic-destructive {\n  --btn-classic-bg: var(--destructive);\n  background-image: linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.15)), linear-gradient(to bottom, transparent 50%, var(--destructive) 80%);\n  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.25), inset 0 0 0 1px var(--destructive), inset 0 -1px 0 0 oklch(0 0 0 / 0.2), 0 1px 3px 0 oklch(0 0 0 / 0.12), 0 2px 6px 0 oklch(0 0 0 / 0.08);\n}\n.btn-classic-destructive::after {\n  background-image: linear-gradient(oklch(1 0 0 / 0.1), oklch(1 0 0 / 0.03) 40%, transparent 60%, oklch(0 0 0 / 0.05));\n  box-shadow: inset 0 1px 2px 0 oklch(1 0 0 / 0.2), inset 0 -1px 2px 0 oklch(0 0 0 / 0.15);\n}"
+      },
+      "cssVars": {
+        "light": {
+          "--ease-out-cubic": "cubic-bezier(0.215, 0.61, 0.355, 1)",
+          "--ease-out-quart": "cubic-bezier(0.165, 0.84, 0.44, 1)",
+          "--ease-in-out-cubic": "cubic-bezier(0.645, 0.045, 0.355, 1)"
+        }
+      }
+    },
+    {
+      "name": "button-group",
+      "type": "registry:ui",
+      "title": "Button Group",
+      "description": "Groups buttons and inputs together with shared borders and separators",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils", "separator"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/button-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "calendar",
+      "type": "registry:ui",
+      "title": "Calendar",
+      "description": "Date picker calendar with range selection support",
+      "dependencies": ["react-day-picker", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/calendar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Container with header, content, footer, and optional action slot",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "carousel",
+      "type": "registry:ui",
+      "title": "Carousel",
+      "description": "Scrollable content carousel with navigation controls",
+      "dependencies": ["embla-carousel-react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/carousel.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "chart",
+      "type": "registry:ui",
+      "title": "Chart",
+      "description": "Chart container with theming, tooltip, and legend wrapping Recharts",
+      "dependencies": ["recharts"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/chart.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "A control that allows the user to toggle between checked and not checked",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "collapsible",
+      "type": "registry:ui",
+      "title": "Collapsible",
+      "description": "Expandable/collapsible content panel",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/collapsible.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "combobox",
+      "type": "registry:ui",
+      "title": "Combobox",
+      "description": "Autocomplete input with dropdown list and multi-select support",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button", "input-group"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/combobox.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "command",
+      "type": "registry:ui",
+      "title": "Command",
+      "description": "Fast, composable command menu built on cmdk",
+      "dependencies": ["cmdk", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "dialog", "input-group"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/command.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "context-menu",
+      "type": "registry:ui",
+      "title": "Context Menu",
+      "description": "Right-click context menu with items, checkboxes, radio groups, and submenus",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Modal dialog with overlay, close button, and footer",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "direction",
+      "type": "registry:ui",
+      "title": "Direction",
+      "description": "RTL/LTR direction provider using Base UI",
+      "dependencies": ["@base-ui/react"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/direction.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "drawer",
+      "type": "registry:ui",
+      "title": "Drawer",
+      "description": "Slide-out drawer panel from any edge using Vaul",
+      "dependencies": ["vaul"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/drawer.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Dropdown menu with items, checkboxes, radio groups, and submenus",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "type": "registry:ui",
+      "title": "Empty",
+      "description": "Empty state placeholder with icon, title, description, and action",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/empty.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "field",
+      "type": "registry:ui",
+      "title": "Field",
+      "description": "Form field layout with label, description, error, and grouping",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "label", "separator"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/field.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "hover-card",
+      "type": "registry:ui",
+      "title": "Hover Card",
+      "description": "Popup card that appears on hover",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/hover-card.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Text input field with Base UI primitive",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-group",
+      "type": "registry:ui",
+      "title": "Input Group",
+      "description": "Composable input wrapper with addons, buttons, and text decorations",
+      "dependencies": ["class-variance-authority"],
+      "registryDependencies": ["utils", "button", "input", "textarea"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/input-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "input-otp",
+      "type": "registry:ui",
+      "title": "Input OTP",
+      "description": "One-time password input with individual character slots",
+      "dependencies": ["input-otp", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/input-otp.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "item",
+      "type": "registry:ui",
+      "title": "Item",
+      "description": "List item with media, content, title, description, and actions",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils", "separator"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/item.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "kbd",
+      "type": "registry:ui",
+      "title": "Kbd",
+      "description": "Keyboard shortcut badge for displaying key combinations",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/kbd.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "label",
+      "type": "registry:ui",
+      "title": "Label",
+      "description": "Renders an accessible label associated with controls",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/label.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "menubar",
+      "type": "registry:ui",
+      "title": "Menubar",
+      "description": "Horizontal menu bar with dropdown menus and submenus",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "dropdown-menu"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/menubar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "native-select",
+      "type": "registry:ui",
+      "title": "Native Select",
+      "description": "Styled native HTML select element with custom caret",
+      "dependencies": ["@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/native-select.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "navigation-menu",
+      "type": "registry:ui",
+      "title": "Navigation Menu",
+      "description": "Site navigation menu with animated content panels",
+      "dependencies": ["@base-ui/react", "class-variance-authority", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/navigation-menu.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "title": "Pagination",
+      "description": "Page navigation with previous/next links and page numbers",
+      "dependencies": ["@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/pagination.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "popover",
+      "type": "registry:ui",
+      "title": "Popover",
+      "description": "Floating content panel anchored to a trigger element",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/popover.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Progress bar with track, indicator, and value display",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "radio-group",
+      "type": "registry:ui",
+      "title": "Radio Group",
+      "description": "A set of checkable buttons where only one can be checked at a time",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/radio-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "resizable",
+      "type": "registry:ui",
+      "title": "Resizable",
+      "description": "Resizable panel groups with draggable handles",
+      "dependencies": ["react-resizable-panels"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/resizable.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "scroll-area",
+      "type": "registry:ui",
+      "title": "Scroll Area",
+      "description": "Custom scrollbar container with Base UI primitives",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/scroll-area.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "title": "Select",
+      "description": "Displays a list of options with classic embossed trigger",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/select.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "css": {
+        "@layer components": ".select-classic {\n  --btn-classic-bg: var(--background);\n  position: relative;\n  z-index: 0;\n  background-image: linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));\n  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.6), 0 1px 2px 0 oklch(0 0 0 / 0.05), 0 0 0 1px var(--border);\n}\n.select-classic::after {\n  content: '';\n  position: absolute;\n  border-radius: inherit;\n  pointer-events: none;\n  inset: 0;\n  z-index: -1;\n  border: 1px solid transparent;\n  background-clip: content-box;\n  background-color: inherit;\n  background-image: linear-gradient(oklch(0 0 0 / 0.01), transparent 40%, oklch(1 0 0 / 0.04));\n  box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.3);\n}"
+      }
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "title": "Separator",
+      "description": "Visually or semantically separates content",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/separator.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "title": "Sheet",
+      "description": "Slide-in panel overlay from any edge with close button",
+      "dependencies": ["@base-ui/react", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "button"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/sheet.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sidebar",
+      "type": "registry:ui",
+      "title": "Sidebar",
+      "description": "Application sidebar with collapsible states, mobile sheet, and keyboard toggle",
+      "dependencies": ["@base-ui/react", "class-variance-authority", "@phosphor-icons/react"],
+      "registryDependencies": ["utils", "use-mobile", "button", "input", "separator", "sheet", "skeleton", "tooltip"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Placeholder loading state for content",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "slider",
+      "type": "registry:ui",
+      "title": "Slider",
+      "description": "Range slider with track, indicator, and thumbs",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/slider.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "sonner",
+      "type": "registry:ui",
+      "title": "Sonner",
+      "description": "Toast notification system with Phosphor icons",
+      "dependencies": ["sonner", "next-themes", "@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/sonner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "title": "Spinner",
+      "description": "Animated loading spinner with accessibility label",
+      "dependencies": ["@phosphor-icons/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/spinner.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Toggle control with small and default size variants",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "title": "Table",
+      "description": "Responsive table with header, body, footer, and caption",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/table.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Tabbed interface with default and line variants",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input with auto-sizing",
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "title": "Toggle",
+      "description": "Two-state button that can be toggled on or off",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/toggle.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "toggle-group",
+      "type": "registry:ui",
+      "title": "Toggle Group",
+      "description": "Grouped toggle buttons with shared variant and size context",
+      "dependencies": ["@base-ui/react", "class-variance-authority"],
+      "registryDependencies": ["utils", "toggle"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/toggle-group.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Popup that displays information on hover or focus",
+      "dependencies": ["@base-ui/react"],
+      "registryDependencies": ["utils"],
+      "files": [
+        {
+          "path": "registry/new-york/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ]
+    }
+  ]
+}

@@ -7,8 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "SF Mono", ui-monospace, monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -38,13 +38,14 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  /* charles.md radius system: md=6px, lg=8px, xl=12px */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.25rem;
+  --radius-4xl: 1.5rem;
 }
 
 :root {
@@ -71,7 +72,8 @@
   --chart-3: oklch(0.546 0.245 262.881);
   --chart-4: oklch(0.488 0.243 264.376);
   --chart-5: oklch(0.424 0.199 265.638);
-  --radius: 0.625rem;
+  /* charles.md: buttons/inputs = 6px (rounded-md) */
+  --radius: 0.375rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);
@@ -80,40 +82,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 251.813);
-  --chart-2: oklch(0.623 0.214 259.815);
-  --chart-3: oklch(0.546 0.245 262.881);
-  --chart-4: oklch(0.488 0.243 264.376);
-  --chart-5: oklch(0.424 0.199 265.638);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* charles.md motion easings */
+  --ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --ease-out-quart: cubic-bezier(0.165, 0.84, 0.44, 1);
+  --ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 @layer base {
@@ -124,6 +97,250 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply font-sans antialiased;
+  }
+
+  /* charles.md: tabular-nums for number columns */
+  [data-tabular-nums] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* charles.md: hover effects only for hover-capable devices */
+  @media (hover: hover) and (pointer: fine) {
+    .hover-lift:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  /* charles.md: reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
   }
 }
+
+/*
+ * Radix Classic button treatment
+ * Embossed/raised look via layered shadows + ::after pseudo-element gradient
+ * Applied to: default, outline, secondary, destructive buttons + select triggers
+ */
+@layer components {
+  .btn-classic {
+    position: relative;
+    z-index: 0;
+    background-clip: border-box !important;
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.04)),
+      linear-gradient(to bottom, transparent 50%, var(--btn-classic-bg, transparent) 80%);
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.12),
+      inset 0 0 0 1px var(--btn-classic-bg, transparent),
+      0 1px 2px 0 oklch(0 0 0 / 0.06),
+      0 1px 3px 0 oklch(0 0 0 / 0.04);
+  }
+
+  .btn-classic::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    inset: 0;
+    z-index: 1;
+    border: 1px solid transparent;
+    background-clip: content-box;
+    background-image: linear-gradient(
+      oklch(0 0 0 / 0.02),
+      transparent 40%,
+      oklch(1 0 0 / 0.06)
+    );
+    box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.12);
+    transition: background-color 150ms ease, background-image 150ms ease, box-shadow 150ms ease;
+  }
+
+  /* Ensure button text/icons sit above the ::after overlay */
+  .btn-classic > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Hover — deepen the emboss slightly */
+  @media (hover: hover) and (pointer: fine) {
+    .btn-classic:hover:not(:disabled, [data-disabled])::after {
+      background-image: linear-gradient(
+        oklch(0 0 0 / 0.04) -15%,
+        transparent 40%,
+        oklch(1 0 0 / 0.08)
+      );
+    }
+    /* Solid bg variants — lighten overlay on hover for visible feedback */
+    .btn-classic-primary:hover:not(:disabled, [data-disabled])::after,
+    .btn-classic-destructive:hover:not(:disabled, [data-disabled])::after {
+      background-color: oklch(1 0 0 / 0.1);
+      background-image: linear-gradient(
+        oklch(1 0 0 / 0.14),
+        oklch(1 0 0 / 0.05) 40%,
+        transparent 60%,
+        oklch(0 0 0 / 0.03)
+      );
+      box-shadow:
+        inset 0 1px 2px 0 oklch(1 0 0 / 0.25),
+        inset 0 -1px 2px 0 oklch(0 0 0 / 0.1);
+    }
+  }
+
+  /* Active / pressed — invert the emboss for a pressed-in feel */
+  .btn-classic:active:not(:disabled, [data-disabled]) {
+    background-image: linear-gradient(oklch(0 0 0 / 0.03), transparent);
+    box-shadow:
+      inset 0 4px 2px -2px oklch(0 0 0 / 0.06),
+      inset 0 1px 1px oklch(0 0 0 / 0.08),
+      inset 0 0 0 1px oklch(0 0 0 / 0.05),
+      inset 0 0 0 1px var(--btn-classic-bg, transparent),
+      inset 0 3px 2px oklch(0 0 0 / 0.04);
+    padding-top: 1px;
+  }
+
+  .btn-classic:active:not(:disabled, [data-disabled])::after {
+    box-shadow: none;
+    background-image: linear-gradient(
+      oklch(0 0 0 / 0.04),
+      transparent 40%,
+      oklch(1 0 0 / 0.06)
+    );
+  }
+
+  /* Disabled classic — flatten */
+  .btn-classic:where(:disabled, [data-disabled]) {
+    background-image: none;
+    box-shadow: none;
+  }
+  .btn-classic:where(:disabled, [data-disabled])::after {
+    box-shadow: none;
+    background-image: linear-gradient(
+      oklch(0 0 0 / 0.02) -20%,
+      transparent,
+      oklch(1 0 0 / 0.02)
+    );
+  }
+
+  /* --- Variant-specific classic overrides --- */
+
+  /* Default (primary) — dark bg, aggressive highlights to match Radix classic */
+  .btn-classic-primary {
+    --btn-classic-bg: var(--primary);
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.15)),
+      linear-gradient(to bottom, transparent 50%, var(--primary) 80%);
+    box-shadow:
+      /* bright top edge highlight */
+      inset 0 1px 0 0 oklch(1 0 0 / 0.25),
+      /* border ring */
+      inset 0 0 0 1px var(--primary),
+      /* bottom edge darkening */
+      inset 0 -1px 0 0 oklch(0 0 0 / 0.2),
+      /* outer drop shadow */
+      0 1px 3px 0 oklch(0 0 0 / 0.12),
+      0 2px 6px 0 oklch(0 0 0 / 0.08);
+  }
+  .btn-classic-primary::after {
+    background-image: linear-gradient(
+      oklch(1 0 0 / 0.1),
+      oklch(1 0 0 / 0.03) 40%,
+      transparent 60%,
+      oklch(0 0 0 / 0.05)
+    );
+    box-shadow:
+      inset 0 1px 2px 0 oklch(1 0 0 / 0.2),
+      inset 0 -1px 2px 0 oklch(0 0 0 / 0.15);
+  }
+
+  /* Outline — lighter treatment, visible border */
+  .btn-classic-outline {
+    --btn-classic-bg: var(--background);
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.6),
+      0 1px 2px 0 oklch(0 0 0 / 0.05),
+      0 0 0 1px var(--border);
+  }
+  .btn-classic-outline::after {
+    box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.3);
+  }
+
+  /* Secondary — subtle emboss on muted bg */
+  .btn-classic-secondary {
+    --btn-classic-bg: var(--secondary);
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.5),
+      0 1px 2px 0 oklch(0 0 0 / 0.04),
+      0 0 0 1px oklch(0 0 0 / 0.06);
+  }
+  .btn-classic-secondary::after {
+    box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.25);
+  }
+
+  /* Destructive — solid red, same aggressive emboss as primary */
+  .btn-classic-destructive {
+    --btn-classic-bg: var(--destructive);
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.15)),
+      linear-gradient(to bottom, transparent 50%, var(--destructive) 80%);
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.25),
+      inset 0 0 0 1px var(--destructive),
+      inset 0 -1px 0 0 oklch(0 0 0 / 0.2),
+      0 1px 3px 0 oklch(0 0 0 / 0.12),
+      0 2px 6px 0 oklch(0 0 0 / 0.08);
+  }
+  .btn-classic-destructive::after {
+    background-image: linear-gradient(
+      oklch(1 0 0 / 0.1),
+      oklch(1 0 0 / 0.03) 40%,
+      transparent 60%,
+      oklch(0 0 0 / 0.05)
+    );
+    box-shadow:
+      inset 0 1px 2px 0 oklch(1 0 0 / 0.2),
+      inset 0 -1px 2px 0 oklch(0 0 0 / 0.15);
+  }
+
+  /* Select trigger — outline-style classic */
+  .select-classic {
+    --btn-classic-bg: var(--background);
+    position: relative;
+    z-index: 0;
+    background-image:
+      linear-gradient(to bottom, transparent 50%, oklch(0 0 0 / 0.02));
+    box-shadow:
+      inset 0 1px 0 0 oklch(1 0 0 / 0.6),
+      0 1px 2px 0 oklch(0 0 0 / 0.05),
+      0 0 0 1px var(--border);
+  }
+  .select-classic::after {
+    content: '';
+    position: absolute;
+    border-radius: inherit;
+    pointer-events: none;
+    inset: 0;
+    z-index: -1;
+    border: 1px solid transparent;
+    background-clip: content-box;
+    background-color: inherit;
+    background-image: linear-gradient(
+      oklch(0 0 0 / 0.01),
+      transparent 40%,
+      oklch(1 0 0 / 0.04)
+    );
+    box-shadow: inset 0 2px 3px -1px oklch(1 0 0 / 0.3);
+  }
+}
+

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "motion",
+  "title": "Motion Presets",
+  "description": "Framer Motion easing curves, duration presets, and enter/exit animations",
+  "files": [
+    {
+      "path": "registry/new-york/lib/motion.ts",
+      "content": "/**\n * charles.md motion presets — Framer Motion defaults\n *\n * Only animate transform and opacity (GPU-composited).\n * Never animate height, width, padding, or margin.\n * Every animation must support prefers-reduced-motion.\n */\n\nexport const easeOutCubic = [0.215, 0.61, 0.355, 1] as const;\nexport const easeOutQuart = [0.165, 0.84, 0.44, 1] as const;\nexport const easeInOutCubic = [0.645, 0.045, 0.355, 1] as const;\n\n/** Enter/exit — elements appearing or disappearing */\nexport const fadeInUp = {\n  initial: { opacity: 0, y: 8 },\n  animate: { opacity: 1, y: 0 },\n  exit: { opacity: 0, y: 4 },\n  transition: { duration: 0.2, ease: easeOutCubic },\n} as const;\n\n/** Subtle fade — for less dramatic transitions */\nexport const fadeIn = {\n  initial: { opacity: 0 },\n  animate: { opacity: 1 },\n  exit: { opacity: 0 },\n  transition: { duration: 0.15, ease: easeOutCubic },\n} as const;\n\n/** Spring — for drag and playful interactions only */\nexport const spring = {\n  type: \"spring\" as const,\n  duration: 0.5,\n  bounce: 0.15,\n} as const;\n\n/** Duration presets (ms) */\nexport const duration = {\n  micro: 0.1,       // hover, color changes: 100ms\n  tooltip: 0.15,    // dropdowns, tooltips: 150ms\n  dropdown: 0.2,    // dropdowns: 200ms\n  modal: 0.25,      // modals, drawers: 250ms\n  page: 0.35,       // page transitions: 350ms\n} as const;\n",
+      "type": "registry:lib"
+    }
+  ],
+  "type": "registry:lib"
+}

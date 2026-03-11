@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "direction",
+  "title": "Direction",
+  "description": "RTL/LTR direction provider using Base UI",
+  "dependencies": [
+    "@base-ui/react"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/ui/direction.tsx",
+      "content": "\"use client\"\n\nexport {\n  DirectionProvider,\n  useDirection,\n} from \"@base-ui/react/direction-provider\"\n",
+      "type": "registry:ui"
+    }
+  ],
+  "type": "registry:ui"
+}
