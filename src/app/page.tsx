@@ -76,8 +76,8 @@ function PaymentCard() {
             <Label htmlFor="card-name">Name on Card</Label>
             <Input id="card-name" placeholder="John Doe" />
           </div>
-          <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-2 space-y-2">
+          <div className="grid grid-cols-3 gap-4 max-sm:grid-cols-1">
+            <div className="col-span-2 space-y-2 max-sm:col-span-1">
               <Label htmlFor="card-number">Card Number</Label>
               <Input id="card-number" placeholder="1234 5678 9012 3456" />
             </div>
@@ -89,7 +89,7 @@ function PaymentCard() {
           <p className="text-xs text-muted-foreground">
             Enter a 16-digit number.
           </p>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
             <div className="space-y-2">
               <Label>Month</Label>
               <Select defaultValue="">
@@ -595,13 +595,13 @@ function ShowcaseTabs() {
   return (
     <div className="space-y-4">
       {/* Tab bar + color picker */}
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-1">
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center gap-1 overflow-x-auto [scrollbar-width:none] [-webkit-overflow-scrolling:touch] [&::-webkit-scrollbar]:hidden">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+              className={`shrink-0 rounded-md px-3 py-1.5 text-sm transition-colors ${
                 activeTab === tab.id
                   ? "bg-muted font-medium text-foreground"
                   : "text-muted-foreground hover:bg-muted/50 hover:text-foreground"
@@ -611,7 +611,9 @@ function ShowcaseTabs() {
             </button>
           ))}
         </div>
-        <BaseColorPicker value={baseColor} onValueChange={setBaseColor} />
+        <div className="shrink-0">
+          <BaseColorPicker value={baseColor} onValueChange={setBaseColor} />
+        </div>
       </div>
 
       {/* Tab content */}
@@ -642,7 +644,7 @@ export default function Home() {
           rel="noopener noreferrer"
           className="mb-6"
         >
-          <Badge variant="secondary" className="gap-1.5 rounded-full px-3 py-1 text-xs">
+          <Badge variant="secondary" className="gap-1.5 rounded-full px-3 py-1 text-xs leading-none">
             shincn/registry — open source
             <ArrowRight className="size-3" />
           </Badge>

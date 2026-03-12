@@ -60,7 +60,7 @@ function DocsHeader() {
 
           {/* Logo */}
           <Link
-            href="/docs"
+            href="/"
             className="flex items-center gap-2 font-semibold"
           >
             shincn

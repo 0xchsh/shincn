@@ -61,7 +61,7 @@ export function DashboardDemo() {
         <div className="flex h-14 items-center gap-4 px-6">
           <span className="text-sm font-semibold tracking-tight">Acme Inc</span>
           <Separator orientation="vertical" className="h-5" />
-          <nav className="flex items-center gap-4">
+          <nav className="hidden items-center gap-4 md:flex">
             <Button variant="ghost" size="sm" className="text-xs font-medium">
               Overview
             </Button>
@@ -92,7 +92,7 @@ export function DashboardDemo() {
               <MagnifyingGlass className="absolute left-2.5 top-1/2 h-3.5 w-3.5 -translate-y-1/2 text-muted-foreground" />
               <Input
                 placeholder="Search..."
-                className="h-8 w-48 pl-8 text-xs"
+                className="h-8 w-32 pl-8 text-xs sm:w-48"
               />
             </div>
             <Avatar className="h-8 w-8">

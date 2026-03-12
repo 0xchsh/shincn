@@ -67,9 +67,9 @@ export function PlaygroundDemo() {
       <Separator />
 
       {/* Main Area */}
-      <div className="flex gap-6">
+      <div className="flex flex-col gap-6 md:flex-row">
         {/* Left Column — Textarea */}
-        <div className="flex flex-1 flex-col gap-4" style={{ flex: "7 1 0%" }}>
+        <div className="flex flex-1 flex-col gap-4 md:[flex:7_1_0%]">
           <Textarea
             placeholder="Write a tagline for an ice cream shop"
             className="min-h-[300px] resize-none text-sm"
@@ -84,10 +84,7 @@ export function PlaygroundDemo() {
         </div>
 
         {/* Right Sidebar — Settings */}
-        <div
-          className="flex flex-col gap-6"
-          style={{ flex: "3 1 0%" }}
-        >
+        <div className="flex flex-col gap-6 md:[flex:3_1_0%]">
           {/* Mode */}
           <div className="flex flex-col gap-2">
             <Label className="text-sm font-medium">Mode</Label>

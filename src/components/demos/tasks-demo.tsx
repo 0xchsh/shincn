@@ -171,7 +171,7 @@ export function TasksDemo() {
         </div>
 
         {/* Table */}
-        <div className="rounded-md border">
+        <div className="overflow-x-auto rounded-md border">
           <table className="w-full caption-bottom text-sm">
             <thead className="[&_tr]:border-b">
               <tr className="border-b transition-colors hover:bg-muted/50">
