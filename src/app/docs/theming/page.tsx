@@ -25,10 +25,18 @@ export default function ThemingPage() {
           Colors are defined as oklch values in the <DocInlineCode>:root</DocInlineCode> selector.
           The base palette uses neutral tones:
         </DocP>
+        <DocP>
+          Here are the core tokens. See your <DocInlineCode>globals.css</DocInlineCode> for
+          the full set including card, popover, chart, and sidebar tokens.
+        </DocP>
         <CodeBlock
           code={`:root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
   --primary: oklch(0.205 0 0);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
@@ -41,6 +49,8 @@ export default function ThemingPage() {
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
+  --radius: 0.375rem;
+  /* ... chart-1 through chart-5, sidebar-* tokens */
 }`}
         />
       </div>

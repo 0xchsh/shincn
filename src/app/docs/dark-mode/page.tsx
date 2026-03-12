@@ -69,7 +69,8 @@ export default function RootLayout({ children }) {
         <DocStep step={4} title="Add dark mode tokens to globals.css">
           <DocP>
             Define the <DocInlineCode>.dark</DocInlineCode> class with inverted
-            color tokens:
+            color tokens. See your <DocInlineCode>globals.css</DocInlineCode> for
+            the full set including chart and sidebar tokens.
           </DocP>
           <CodeBlock
             code={`.dark {
@@ -91,6 +92,7 @@ export default function RootLayout({ children }) {
   --border: oklch(0.369 0 0);
   --input: oklch(0.369 0 0);
   --ring: oklch(0.556 0 0);
+  /* ... chart-1 through chart-5, sidebar-* tokens */
 }`}
           />
         </DocStep>

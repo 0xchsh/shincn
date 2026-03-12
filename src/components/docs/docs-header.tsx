@@ -3,7 +3,8 @@
 import * as React from "react"
 import Link from "next/link"
 import { GithubLogo, List } from "@phosphor-icons/react"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SearchCommand } from "@/components/docs/search-command"
 import { Separator } from "@/components/ui/separator"
@@ -38,14 +39,11 @@ function DocsHeader() {
           {/* Mobile nav trigger */}
           <Sheet>
             <SheetTrigger
-              render={
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="md:hidden"
-                  aria-label="Open navigation"
-                />
-              }
+              className={cn(
+                buttonVariants({ variant: "ghost", size: "icon" }),
+                "md:hidden"
+              )}
+              aria-label="Open navigation"
             >
               <List className="size-5" />
             </SheetTrigger>
