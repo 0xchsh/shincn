@@ -18,7 +18,8 @@ import {
   User,
 } from "@phosphor-icons/react"
 import { DocsHeader } from "@/components/docs/docs-header"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import {
   Card,
@@ -658,16 +659,18 @@ export default function Home() {
         </p>
 
         <div className="mt-8 flex items-center gap-3">
-          <Button size="lg" render={<Link href="/docs" />}>
+          <Link
+            href="/docs"
+            className={cn(buttonVariants({ size: "lg" }))}
+          >
             Get Started
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            render={<Link href="/docs/components/button" />}
+          </Link>
+          <Link
+            href="/docs/components/button"
+            className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
           >
             View Components
-          </Button>
+          </Link>
         </div>
       </section>
 
