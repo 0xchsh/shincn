@@ -70,17 +70,17 @@ function PaymentCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <div className="grid gap-3">
-          <div className="space-y-1.5">
+        <div className="grid gap-4">
+          <div className="space-y-2">
             <Label htmlFor="card-name">Name on Card</Label>
             <Input id="card-name" placeholder="John Doe" />
           </div>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="col-span-2 space-y-1.5">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="col-span-2 space-y-2">
               <Label htmlFor="card-number">Card Number</Label>
               <Input id="card-number" placeholder="1234 5678 9012 3456" />
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <Label htmlFor="card-cvv">CVV</Label>
               <Input id="card-cvv" placeholder="123" />
             </div>
@@ -88,8 +88,8 @@ function PaymentCard() {
           <p className="text-xs text-muted-foreground">
             Enter a 16-digit number.
           </p>
-          <div className="grid grid-cols-3 gap-3">
-            <div className="space-y-1.5">
+          <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-2">
               <Label>Month</Label>
               <Select defaultValue="">
                 <SelectTrigger className="w-full">
@@ -104,7 +104,7 @@ function PaymentCard() {
                 </SelectContent>
               </Select>
             </div>
-            <div className="space-y-1.5">
+            <div className="space-y-2">
               <Label>Year</Label>
               <Select defaultValue="">
                 <SelectTrigger className="w-full">
@@ -121,7 +121,7 @@ function PaymentCard() {
             </div>
           </div>
           <Separator />
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <p className="text-sm font-medium">Billing Address</p>
             <p className="text-xs text-muted-foreground">
               The billing address associated with your payment method
@@ -133,7 +133,7 @@ function PaymentCard() {
               Same as shipping address
             </Label>
           </div>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             <Label htmlFor="comments">Comments</Label>
             <Textarea
               id="comments"
@@ -154,7 +154,7 @@ function PaymentCard() {
 function TeamCard() {
   return (
     <Card>
-      <CardContent className="flex flex-col items-center gap-3 pt-6">
+      <CardContent className="flex flex-col items-center gap-4 pt-6">
         <AvatarGroup>
           <Avatar size="sm">
             <AvatarFallback className="text-[10px]">CH</AvatarFallback>
@@ -184,7 +184,7 @@ function TeamCard() {
 function AuthCard() {
   return (
     <Card>
-      <CardContent className="space-y-3 pt-6">
+      <CardContent className="space-y-4 pt-6">
         <div className="flex items-center gap-2 rounded-lg border px-3 py-2">
           <Globe className="size-4 text-muted-foreground" />
           <span className="flex-1 text-sm text-muted-foreground">
@@ -221,7 +221,7 @@ function AuthCard() {
 function ChatCard() {
   return (
     <Card>
-      <CardContent className="space-y-3 pt-6">
+      <CardContent className="space-y-4 pt-6">
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="gap-1">
             <span className="size-1.5 rounded-full bg-emerald-500" />
@@ -291,7 +291,7 @@ function ChatCard() {
 function SettingsCard() {
   return (
     <Card>
-      <CardContent className="space-y-3 pt-6">
+      <CardContent className="space-y-4 pt-6">
         <Button variant="outline" size="sm" className="gap-1">
           <span className="size-1.5 rounded-full bg-emerald-500" />
           Add context
@@ -363,7 +363,7 @@ function SettingsCard() {
 function EnvironmentCard() {
   return (
     <Card>
-      <CardContent className="space-y-3 pt-6">
+      <CardContent className="space-y-4 pt-6">
         <div>
           <p className="text-sm font-medium">Compute Environment</p>
           <p className="text-xs text-muted-foreground">
