@@ -680,32 +680,6 @@ export default function Home() {
         <ShowcaseTabs />
       </section>
 
-      {/* Footer */}
-      <footer className="border-t py-8">
-        <div className="mx-auto max-w-6xl px-6">
-          <p className="text-sm text-muted-foreground">
-            Built by{" "}
-            <a
-              href="https://ch.sh"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-foreground underline underline-offset-4 decoration-dotted decoration-muted-foreground/50"
-            >
-              ch.sh
-            </a>
-            . The source code is available on{" "}
-            <a
-              href="https://github.com/0xchsh/shincn"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-foreground underline underline-offset-4 decoration-dotted decoration-muted-foreground/50"
-            >
-              GitHub
-            </a>
-            .
-          </p>
-        </div>
-      </footer>
     </div>
   )
 }

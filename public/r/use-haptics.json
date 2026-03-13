@@ -1,0 +1,17 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "use-haptics",
+  "title": "useHaptics",
+  "description": "React hook for triggering haptic feedback on mobile devices",
+  "dependencies": [
+    "web-haptics"
+  ],
+  "files": [
+    {
+      "path": "registry/new-york/hooks/use-haptics.ts",
+      "content": "\"use client\"\n\nimport { useWebHaptics } from \"web-haptics/react\"\n\nexport function useHaptics(options?: { debug?: boolean }) {\n  const { trigger, cancel, isSupported } = useWebHaptics(options)\n\n  return { trigger, cancel, isSupported }\n}\n",
+      "type": "registry:hook"
+    }
+  ],
+  "type": "registry:hook"
+}

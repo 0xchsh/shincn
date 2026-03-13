@@ -8,6 +8,8 @@ import { ComponentPreview } from "@/components/docs/component-preview"
 import { DocPager } from "@/components/docs/doc-pager"
 
 export default function CalendarPage() {
+  const [date, setDate] = React.useState<Date | undefined>(new Date())
+
   return (
     <div className="space-y-8">
       <div className="space-y-2">
@@ -19,9 +21,9 @@ export default function CalendarPage() {
       </div>
 
       <ComponentPreview
-        code={`<Calendar />`}
+        code={`<Calendar mode="single" selected={date} onSelect={setDate} />`}
       >
-        <Calendar />
+        <Calendar mode="single" selected={date} onSelect={setDate} />
       </ComponentPreview>
 
 

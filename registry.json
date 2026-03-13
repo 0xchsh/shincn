@@ -41,6 +41,19 @@
       ]
     },
     {
+      "name": "use-haptics",
+      "type": "registry:hook",
+      "title": "useHaptics",
+      "description": "React hook for triggering haptic feedback on mobile devices",
+      "dependencies": ["web-haptics"],
+      "files": [
+        {
+          "path": "registry/new-york/hooks/use-haptics.ts",
+          "type": "registry:hook"
+        }
+      ]
+    },
+    {
       "name": "charles",
       "type": "registry:file",
       "title": "Design System",
@@ -155,8 +168,8 @@
       "type": "registry:ui",
       "title": "Button",
       "description": "Embossed button with classic raised look, multiple variants and sizes",
-      "dependencies": ["@base-ui/react", "class-variance-authority"],
-      "registryDependencies": ["utils"],
+      "dependencies": ["@base-ui/react", "class-variance-authority", "web-haptics"],
+      "registryDependencies": ["utils", "use-haptics"],
       "files": [
         {
           "path": "registry/new-york/ui/button.tsx",
