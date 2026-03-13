@@ -1,9 +1,9 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
+import { HapticLink } from "@/components/ui/haptic-link"
 import { docsConfig } from "@/lib/docs"
 import { ScrollArea } from "@/components/ui/scroll-area"
 
@@ -24,7 +24,7 @@ function DocsSidebar({ className }: { className?: string }) {
                     pathname === href ||
                     (item.slug === "" && pathname === "/docs")
                   return (
-                    <Link
+                    <HapticLink
                       key={item.slug}
                       href={href}
                       className={cn(
@@ -35,7 +35,7 @@ function DocsSidebar({ className }: { className?: string }) {
                       )}
                     >
                       {item.title}
-                    </Link>
+                    </HapticLink>
                   )
                 })}
               </div>

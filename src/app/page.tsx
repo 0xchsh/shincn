@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import * as React from "react"
+import { HapticLink } from "@/components/ui/haptic-link"
 import {
   ArrowRight,
   Bell,
@@ -638,7 +639,7 @@ export default function Home() {
 
       {/* Hero */}
       <section className="flex flex-col items-center px-4 pt-16 pb-12 text-center sm:pt-24 sm:pb-16">
-        <Link
+        <HapticLink
           href="https://github.com/0xchsh/shincn"
           target="_blank"
           rel="noopener noreferrer"
@@ -648,7 +649,7 @@ export default function Home() {
             shincn/registry — open source
             <ArrowRight className="size-3" />
           </Badge>
-        </Link>
+        </HapticLink>
 
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
           ch.sh Brand Guidelines
@@ -660,18 +661,18 @@ export default function Home() {
         </p>
 
         <div className="mt-8 flex items-center gap-3">
-          <Link
+          <HapticLink
             href="/docs"
             className={cn(buttonVariants({ size: "lg" }))}
           >
             Get Started
-          </Link>
-          <Link
+          </HapticLink>
+          <HapticLink
             href="/docs/components/button"
             className={cn(buttonVariants({ variant: "outline", size: "lg" }))}
           >
             View Components
-          </Link>
+          </HapticLink>
         </div>
       </section>
 

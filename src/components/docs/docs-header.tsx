@@ -5,6 +5,8 @@ import Link from "next/link"
 import { GithubLogo, List } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
+import { HapticLink } from "@/components/ui/haptic-link"
+import { useHaptics } from "@/hooks/use-haptics"
 import { ModeToggle } from "@/components/mode-toggle"
 import { SearchCommand } from "@/components/docs/search-command"
 import { Separator } from "@/components/ui/separator"
@@ -20,6 +22,7 @@ import { DocsSidebar } from "@/components/docs/docs-sidebar"
 
 function DocsHeader() {
   const [searchOpen, setSearchOpen] = React.useState(false)
+  const { trigger } = useHaptics()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -57,34 +60,34 @@ function DocsHeader() {
           </Sheet>
 
           {/* Logo */}
-          <Link
+          <HapticLink
             href="/"
             className="flex items-center gap-2 font-semibold"
           >
             shincn
-          </Link>
+          </HapticLink>
 
           {/* Nav links */}
           <nav className="hidden items-center gap-1 md:flex">
-            <Link
+            <HapticLink
               href="/docs"
               className="rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               Docs
-            </Link>
-            <Link
+            </HapticLink>
+            <HapticLink
               href="/docs/components/button"
               className="rounded-md px-2.5 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground"
             >
               Components
-            </Link>
+            </HapticLink>
           </nav>
 
           <div className="flex-1" />
 
           {/* Search trigger */}
           <button
-            onClick={() => setSearchOpen(true)}
+            onClick={() => { trigger("nudge"); setSearchOpen(true) }}
             className="hidden h-8 w-56 items-center gap-2 rounded-lg border bg-muted/50 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted sm:inline-flex"
           >
             <span className="flex-1 text-left">Search...</span>
@@ -100,6 +103,7 @@ function DocsHeader() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
+              onClick={() => trigger("nudge")}
               className="inline-flex size-8 items-center justify-center rounded-lg text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             >
               <GithubLogo className="size-4" />

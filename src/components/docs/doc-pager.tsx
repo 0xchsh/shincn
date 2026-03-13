@@ -1,6 +1,8 @@
-import Link from "next/link"
-import { ArrowLeft, ArrowRight } from "@phosphor-icons/react/dist/ssr"
+"use client"
+
+import { ArrowLeft, ArrowRight } from "@phosphor-icons/react"
 import { getPrevNext } from "@/lib/docs"
+import { HapticLink } from "@/components/ui/haptic-link"
 
 function DocPager({ slug }: { slug: string }) {
   const { prev, next } = getPrevNext(slug)
@@ -8,24 +10,24 @@ function DocPager({ slug }: { slug: string }) {
   return (
     <div className="flex items-center justify-between pt-8">
       {prev ? (
-        <Link
+        <HapticLink
           href={`/docs/${prev.slug}`}
           className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-4" />
           {prev.title}
-        </Link>
+        </HapticLink>
       ) : (
         <div />
       )}
       {next ? (
-        <Link
+        <HapticLink
           href={`/docs/${next.slug}`}
           className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
         >
           {next.title}
           <ArrowRight className="size-4" />
-        </Link>
+        </HapticLink>
       ) : (
         <div />
       )}
