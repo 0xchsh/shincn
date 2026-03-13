@@ -638,12 +638,12 @@ export default function Home() {
       <DocsHeader />
 
       {/* Hero */}
-      <section className="flex flex-col items-center px-4 pt-16 pb-12 text-center sm:pt-24 sm:pb-16">
+      <section className="mx-auto max-w-6xl px-4 pt-16 pb-12 sm:pt-24 sm:pb-16">
         <HapticLink
           href="https://github.com/0xchsh/shincn"
           target="_blank"
           rel="noopener noreferrer"
-          className="mb-6"
+          className="mb-6 inline-block"
         >
           <Badge variant="secondary" className="gap-1.5 rounded-full px-3 py-1 text-xs leading-none">
             shincn/registry — open source
@@ -651,7 +651,7 @@ export default function Home() {
           </Badge>
         </HapticLink>
 
-        <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
+        <h1 className="max-w-2xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
           ch.sh Brand Guidelines
         </h1>
 
