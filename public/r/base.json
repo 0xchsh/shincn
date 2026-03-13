@@ -96,7 +96,7 @@
   },
   "type": "registry:base",
   "config": {
-    "style": "shincn",
+    "style": "new-york",
     "tailwind": {
       "baseColor": "neutral"
     },

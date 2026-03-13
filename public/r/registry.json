@@ -9,7 +9,7 @@
       "title": "shincn Base",
       "description": "shincn design system base — theme, CSS variables, and embossed button styles",
       "config": {
-        "style": "shincn",
+        "style": "new-york",
         "iconLibrary": "phosphor",
         "tailwind": {
           "baseColor": "neutral"
