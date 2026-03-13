@@ -11,10 +11,7 @@
     "@phosphor-icons/react",
     "web-haptics"
   ],
-  "registryDependencies": [
-    "utils",
-    "use-haptics"
-  ],
+  "registryDependencies": [],
   "cssVars": {
     "light": {
       "background": "oklch(1 0 0)",
