@@ -651,13 +651,12 @@ export default function Home() {
         </Link>
 
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight sm:text-5xl md:text-6xl">
-          The Foundation for your Design System
+          ch.sh Brand Guidelines
         </h1>
 
         <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
-          A set of beautifully designed components that you can customize,
-          extend, and build on. Start here then make it your own. Open Source.
-          Open Code.
+          A fork of shadcn for my own personal brand and flavor of software.
+          Skeuomorphic buttons, SF Pro Rounded, and Phosphor Icons.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
