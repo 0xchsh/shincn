@@ -70,7 +70,7 @@ export default function IntroductionPage() {
             <InstallCommand command="npx shadcn init" />
           </DocStep>
           <DocStep step={3} title="Add a component from shincn">
-            <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh" />
+            <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh/r" />
           </DocStep>
           <DocStep step={4} title="Use the component">
             <CodeBlock

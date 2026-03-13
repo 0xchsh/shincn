@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SoundProvider } from "@/components/sound-provider";
 import { Agentation } from "agentation";
 import "./globals.css";
 
@@ -23,7 +24,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <TooltipProvider>{children}</TooltipProvider>
+          <SoundProvider>
+            <TooltipProvider>{children}</TooltipProvider>
+          </SoundProvider>
         </ThemeProvider>
         {process.env.NODE_ENV === "development" && <Agentation />}
       </body>

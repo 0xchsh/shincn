@@ -2,12 +2,13 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { GithubLogo, List } from "@phosphor-icons/react"
+import { GithubLogo, List, SpeakerHigh, SpeakerSlash } from "@phosphor-icons/react"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { HapticLink } from "@/components/ui/haptic-link"
 import { useHaptics } from "@/hooks/use-haptics"
 import { ModeToggle } from "@/components/mode-toggle"
+import { useSoundEnabled } from "@/components/sound-provider"
 import { SearchCommand } from "@/components/docs/search-command"
 import { Separator } from "@/components/ui/separator"
 import {
@@ -23,6 +24,7 @@ import { DocsSidebar } from "@/components/docs/docs-sidebar"
 function DocsHeader() {
   const [searchOpen, setSearchOpen] = React.useState(false)
   const { trigger } = useHaptics()
+  const { soundEnabled, setSoundEnabled } = useSoundEnabled()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -108,6 +110,16 @@ function DocsHeader() {
             >
               <GithubLogo className="size-4" />
             </a>
+            <Button
+              variant="ghost"
+              size="icon"
+              aria-label={soundEnabled ? "Mute sounds" : "Unmute sounds"}
+              onClick={() => setSoundEnabled(!soundEnabled)}
+              haptic={false}
+            >
+              <SpeakerHigh className="size-4 scale-100 transition-transform data-[muted=true]:scale-0" data-muted={!soundEnabled} />
+              <SpeakerSlash className="absolute size-4 scale-0 transition-transform data-[muted=true]:scale-100" data-muted={!soundEnabled} />
+            </Button>
             <ModeToggle />
           </div>
         </div>

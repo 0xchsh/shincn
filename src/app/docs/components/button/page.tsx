@@ -27,7 +27,7 @@ export default function ButtonPage() {
 
       <div className="space-y-4">
         <DocH2>Installation</DocH2>
-        <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh" />
+        <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh/r" />
       </div>
 
       <div className="space-y-4">

@@ -53,11 +53,11 @@ export default function InstallationPage() {
             Use the <DocInlineCode>--registry</DocInlineCode> flag to pull
             components from the shincn registry.
           </DocP>
-          <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh" />
+          <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh/r" />
           <DocP>
             You can add multiple components at once:
           </DocP>
-          <InstallCommand command="npx shadcn add button card dialog input tabs --registry https://ui.ch.sh" />
+          <InstallCommand command="npx shadcn add button card dialog input tabs --registry https://ui.ch.sh/r" />
         </DocStep>
 
         <DocStep step={5} title="Configure your fonts">

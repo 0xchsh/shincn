@@ -513,7 +513,7 @@ function BaseColorPicker({
   const [copied, setCopied] = React.useState(false)
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("npx shadcn init --registry https://ui.ch.sh")
+    navigator.clipboard.writeText("npx shadcn init --registry https://ui.ch.sh/r")
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }

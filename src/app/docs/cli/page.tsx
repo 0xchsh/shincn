@@ -25,11 +25,11 @@ export default function CliPage() {
           Pass the <DocInlineCode>--registry</DocInlineCode> flag to pull from
           the shincn registry:
         </DocP>
-        <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh" />
+        <InstallCommand command="npx shadcn add button --registry https://ui.ch.sh/r" />
         <DocP>
           You can add multiple components in a single command:
         </DocP>
-        <InstallCommand command="npx shadcn add button card dialog input tabs --registry https://ui.ch.sh" />
+        <InstallCommand command="npx shadcn add button card dialog input tabs --registry https://ui.ch.sh/r" />
       </div>
 
       <div className="space-y-4">
@@ -43,7 +43,7 @@ export default function CliPage() {
           code={`{
   "registries": {
     "shincn": {
-      "url": "https://ui.ch.sh"
+      "url": "https://ui.ch.sh/r"
     }
   }
 }`}

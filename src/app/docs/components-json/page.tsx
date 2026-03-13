@@ -44,7 +44,7 @@ export default function ComponentsJsonPage() {
   },
   "registries": {
     "shincn": {
-      "url": "https://ui.ch.sh"
+      "url": "https://ui.ch.sh/r"
     }
   }
 }`}
@@ -64,7 +64,7 @@ npx shadcn add shincn/card shincn/dialog`}
         />
         <DocP>
           This is equivalent to passing{" "}
-          <DocInlineCode>--registry https://ui.ch.sh</DocInlineCode> on every
+          <DocInlineCode>--registry https://ui.ch.sh/r</DocInlineCode> on every
           command.
         </DocP>
       </div>
