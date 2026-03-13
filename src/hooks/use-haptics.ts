@@ -11,5 +11,7 @@ export function useHaptics(options?: { sound?: boolean }) {
     debug: shouldPlaySound,
   })
 
-  return { trigger, cancel, isSupported }
+  const { trigger: triggerWithSound } = useWebHaptics({ debug: true })
+
+  return { trigger, triggerWithSound, cancel, isSupported }
 }

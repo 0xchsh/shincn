@@ -23,7 +23,7 @@ import { DocsSidebar } from "@/components/docs/docs-sidebar"
 
 function DocsHeader() {
   const [searchOpen, setSearchOpen] = React.useState(false)
-  const { trigger } = useHaptics()
+  const { trigger, triggerWithSound } = useHaptics()
   const { soundEnabled, setSoundEnabled } = useSoundEnabled()
 
   React.useEffect(() => {
@@ -113,8 +113,13 @@ function DocsHeader() {
             <Button
               variant="ghost"
               size="icon"
+              className="text-muted-foreground"
               aria-label={soundEnabled ? "Mute sounds" : "Unmute sounds"}
-              onClick={() => setSoundEnabled(!soundEnabled)}
+              onClick={() => {
+                const enabling = !soundEnabled
+                setSoundEnabled(enabling)
+                if (enabling) triggerWithSound("nudge")
+              }}
               haptic={false}
             >
               <SpeakerHigh className="size-4 scale-100 transition-transform data-[muted=true]:scale-0" data-muted={!soundEnabled} />
