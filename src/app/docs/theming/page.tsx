@@ -58,12 +58,12 @@ export default function ThemingPage() {
       <div className="space-y-4">
         <DocH2>Typography</DocH2>
         <DocP>
-          shincn uses SF Pro Rounded as the primary sans-serif font and SF Mono
+          shincn uses OpenRunde as the primary sans-serif font and SF Mono
           for code. These are defined in the Tailwind theme:
         </DocP>
         <CodeBlock
           code={`@theme inline {
-  --font-sans: "SF Pro Rounded", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: var(--font-open-runde), ui-rounded, sans-serif;
   --font-mono: "SF Mono", ui-monospace, monospace;
 }`}
         />

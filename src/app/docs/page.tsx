@@ -14,8 +14,8 @@ export default function IntroductionPage() {
         <DocH1>Introduction</DocH1>
         <DocP>
           shincn is a portable design system built on top of shadcn/ui. It provides
-          a curated set of components with a neutral palette, Phosphor icons, SF Pro
-          Rounded typography, restrained radii, and purposeful motion.
+          a curated set of components with a neutral palette, Phosphor icons, OpenRunde
+          typography, restrained radii, and purposeful motion.
         </DocP>
       </div>
 
@@ -46,7 +46,7 @@ export default function IntroductionPage() {
             multiple weights (regular, fill, bold)
           </li>
           <li>
-            <strong className="text-foreground">SF Pro Rounded</strong> &mdash; single sans-serif font
+            <strong className="text-foreground">OpenRunde</strong> &mdash; single sans-serif font
             across the entire UI
           </li>
           <li>

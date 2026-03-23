@@ -657,7 +657,7 @@ export default function Home() {
 
         <p className="mt-5 max-w-xl text-base text-muted-foreground sm:text-lg">
           A fork of shadcn for my own personal brand and flavor of software.
-          Skeuomorphic buttons, SF Pro Rounded, and Phosphor Icons.
+          Skeuomorphic buttons, OpenRunde, and Phosphor Icons.
         </p>
 
         <div className="mt-8 flex items-center gap-3">
